@@ -61,6 +61,8 @@ class Product(models.Model):
 
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
+    available = models.BooleanField(default=True)
+
     class Meta:
         ordering = ('name',)
         index_together = (('id', 'slug'),)

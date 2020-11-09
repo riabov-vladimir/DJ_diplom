@@ -32,4 +32,4 @@ def product_detail(request, id, slug):
 
     context = {'product': product}
 
-    return render(request,'shop/product/detail.html', context)
+    return render(request, 'shop/product/detail.html', context)

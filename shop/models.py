@@ -38,7 +38,7 @@ class Product(models.Model):
     slug = models.SlugField(max_length=70)
 
     image = models.ImageField(
-        upload_to='media/products/',
+        upload_to='products/',
         blank=True,
         verbose_name='Изображение'
     )
@@ -68,7 +68,7 @@ class Article(models.Model):
     text = models.CharField(max_length=1000, verbose_name='Текст статьи')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Создана')
     image = models.ImageField(
-        upload_to='media/articles/',
+        upload_to='articles/',
         blank=True,
         verbose_name='Изображение'
     )

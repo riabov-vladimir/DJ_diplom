@@ -1,0 +1,20 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% for article in article_list %}
+  <div align="center">
+  <h2>{{article.name}}</h2> <br>
+  <h4>{{ article.text }}</h4><br>
+  <img src="{% if article.image %} {{ article.image.url }}
+  {% else %} {% static 'img/no_image.png' %} {% endif %}" width="500"> <br>
+
+    {% for product in article.products.all %}
+    <a href="{{product.get_absolute_url}}"> <h3>{{product.name}} . . . {{ product.price }} ₽ </h3> </a>
+    {% endfor %}
+  </div>
+
+{% endfor %}
+{% endblock %}
+

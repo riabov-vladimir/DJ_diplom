@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Четвёрочка{% endblock %}</title>
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header">
+      <a href="/" class="logo">Четвёрочка</a>
+
+      <form action="/shop/">
+        <input type="submit" value="Каталог товаров" />
+      </form>
+      {% if not user.is_authenticated %}
+      <form action="/login/">
+        <input type="submit" value="LOGIN" />
+      </form>
+      {% else %}
+      <form action="/logout/">
+        <input type="submit" value="LOGOUT" />
+      </form>
+      {% endif %}
+    </div>
+    <div id="subheader">
+
+      <div class="cart">
+        {% with total_items=cart|length %}
+          {% if total_items > 0 %}
+            Ваша корзина:
+            <a href="{% url "cart:cart_detail" %}">
+              товаров - {{ total_items }},
+              на сумму {{ cart.get_total_price }} рублей
+            </a>
+          {% else %}
+            Ваша корзина пуста
+          {% endif %}
+        {% endwith %}
+      </div>
+    </div>
+    <div id="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

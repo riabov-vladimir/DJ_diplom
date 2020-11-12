@@ -20,9 +20,6 @@ class IndexArticle(ListView):
     ordering = 'created'
 
 
-def catalog_view(request):
-    pass
-
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
@@ -46,8 +43,6 @@ def product_detail(request, id, slug):
     product = Product.objects.get(id=id, slug=slug)
 
     cart_product_form = CartAddProductForm()
-
-    print(product.image)
 
     return render(request,
                   'shop/product/detail.html',

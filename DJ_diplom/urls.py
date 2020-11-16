@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.IndexArticle.as_view(), name='index'),
     path('shop/', include('shop.urls', namespace='shop')),
     path('cart/', include('cart.urls', namespace='cart')),
+    path('', include('authentication.urls', namespace='user'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
